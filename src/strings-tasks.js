@@ -159,8 +159,9 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
-  const regex = new RegExp(value);
-  return str.replace(regex, '');
+  const index = str.indexOf(value);
+  if (index < 0) return str;
+  return str.slice(0, index) + str.slice(index + value.length);
 }
 
 /**
