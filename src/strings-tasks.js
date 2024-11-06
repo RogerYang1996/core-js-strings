@@ -506,8 +506,77 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const letters = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z',
+    'a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z',
+  ];
+  const strArr = str.split('');
+  const rot13 = [];
+  for (let i = 0; i < strArr.length; i += 1) {
+    const symbol = strArr[i];
+    const index = letters.indexOf(symbol);
+    if (index !== -1) {
+      rot13.push(
+        letters[
+          ((index + 13) % 26) + (symbol === symbol.toUpperCase() ? 0 : 26)
+        ]
+      );
+    } else {
+      rot13.push(symbol);
+    }
+  }
+  return rot13.join('');
 }
 
 /**
